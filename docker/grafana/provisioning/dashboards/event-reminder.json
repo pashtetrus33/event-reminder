@@ -1,0 +1,216 @@
+{
+  "__inputs": [],
+  "__requires": [],
+  "annotations": { "list": [] },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "panels": [
+
+    { "collapsed": false, "gridPos": {"h":1,"w":24,"x":0,"y":0}, "id":1, "title":"Обзор", "type":"row" },
+
+    {
+      "id": 2, "type": "stat", "title": "Пользователи",
+      "gridPos": {"h":4,"w":4,"x":0,"y":1},
+      "options": { "reduceOptions": {"calcs":["lastNotNull"]}, "orientation":"auto", "textMode":"auto", "colorMode":"background", "graphMode":"none" },
+      "fieldConfig": { "defaults": { "color":{"mode":"thresholds"}, "thresholds":{"steps":[{"color":"blue","value":0}]}, "mappings":[] } },
+      "targets": [{ "datasource":"Prometheus", "expr":"reminder_users{application=\"event-reminder\"}", "instant":true, "legendFormat":"Пользователи" }]
+    },
+
+    {
+      "id": 3, "type": "stat", "title": "Событий всего",
+      "gridPos": {"h":4,"w":4,"x":4,"y":1},
+      "options": { "reduceOptions": {"calcs":["lastNotNull"]}, "orientation":"auto", "textMode":"auto", "colorMode":"background", "graphMode":"none" },
+      "fieldConfig": { "defaults": { "color":{"mode":"thresholds"}, "thresholds":{"steps":[{"color":"purple","value":0}]}, "mappings":[] } },
+      "targets": [{ "datasource":"Prometheus", "expr":"reminder_events_total{application=\"event-reminder\"}", "instant":true, "legendFormat":"Событий" }]
+    },
+
+    {
+      "id": 4, "type": "stat", "title": "Ожидают отправки",
+      "gridPos": {"h":4,"w":4,"x":8,"y":1},
+      "options": { "reduceOptions": {"calcs":["lastNotNull"]}, "orientation":"auto", "textMode":"auto", "colorMode":"background", "graphMode":"none" },
+      "fieldConfig": { "defaults": { "color":{"mode":"thresholds"}, "thresholds":{"steps":[{"color":"green","value":0},{"color":"yellow","value":10},{"color":"red","value":50}]}, "mappings":[] } },
+      "targets": [{ "datasource":"Prometheus", "expr":"reminder_notifications_pending{application=\"event-reminder\"}", "instant":true, "legendFormat":"Pending" }]
+    },
+
+    {
+      "id": 5, "type": "stat", "title": "Отправлено (1ч)",
+      "gridPos": {"h":4,"w":4,"x":12,"y":1},
+      "options": { "reduceOptions": {"calcs":["lastNotNull"]}, "orientation":"auto", "textMode":"auto", "colorMode":"background", "graphMode":"none" },
+      "fieldConfig": { "defaults": { "color":{"mode":"thresholds"}, "thresholds":{"steps":[{"color":"green","value":0}]}, "mappings":[] } },
+      "targets": [{ "datasource":"Prometheus", "expr":"increase(reminder_notifications_sent_total{application=\"event-reminder\",status=\"success\"}[1h])", "instant":true, "legendFormat":"Sent" }]
+    },
+
+    {
+      "id": 6, "type": "stat", "title": "Ошибки (1ч)",
+      "gridPos": {"h":4,"w":4,"x":16,"y":1},
+      "options": { "reduceOptions": {"calcs":["lastNotNull"]}, "orientation":"auto", "textMode":"auto", "colorMode":"background", "graphMode":"none" },
+      "fieldConfig": { "defaults": { "color":{"mode":"thresholds"}, "thresholds":{"steps":[{"color":"green","value":0},{"color":"red","value":1}]}, "mappings":[] } },
+      "targets": [{ "datasource":"Prometheus", "expr":"increase(reminder_notifications_sent_total{application=\"event-reminder\",status=\"error\"}[1h])", "instant":true, "legendFormat":"Errors" }]
+    },
+
+    {
+      "id": 7, "type": "stat", "title": "Последний запуск",
+      "gridPos": {"h":4,"w":4,"x":20,"y":1},
+      "options": { "reduceOptions": {"calcs":["lastNotNull"]}, "orientation":"auto", "textMode":"auto", "colorMode":"background", "graphMode":"none" },
+      "fieldConfig": { "defaults": { "color":{"mode":"thresholds"}, "unit":"dateTimeFromNow", "thresholds":{"steps":[{"color":"green","value":0}]}, "mappings":[] } },
+      "targets": [{ "datasource":"Prometheus", "expr":"reminder_last_run_timestamp{application=\"event-reminder\"} * 1000", "instant":true, "legendFormat":"Last run" }]
+    },
+
+    { "collapsed": false, "gridPos": {"h":1,"w":24,"x":0,"y":5}, "id":10, "title":"Уведомления", "type":"row" },
+
+    {
+      "id": 11, "type": "timeseries", "title": "Уведомления по каналам (rate/мин)",
+      "gridPos": {"h":8,"w":12,"x":0,"y":6},
+      "options": { "tooltip":{"mode":"multi"}, "legend":{"displayMode":"list","placement":"bottom"} },
+      "fieldConfig": {
+        "defaults": { "color":{"mode":"palette-classic"}, "custom":{"lineWidth":2,"fillOpacity":10} },
+        "overrides": [
+          {"matcher":{"id":"byFrameRefID","options":"error"},"properties":[{"id":"color","value":{"fixedColor":"red","mode":"fixed"}}]}
+        ]
+      },
+      "targets": [
+        { "datasource":"Prometheus", "expr":"rate(reminder_notifications_sent_total{application=\"event-reminder\",channel=\"EMAIL\",status=\"success\"}[2m])*60", "legendFormat":"Email ✅" },
+        { "datasource":"Prometheus", "expr":"rate(reminder_notifications_sent_total{application=\"event-reminder\",channel=\"TELEGRAM\",status=\"success\"}[2m])*60", "legendFormat":"Telegram ✅" },
+        { "datasource":"Prometheus", "expr":"rate(reminder_notifications_sent_total{application=\"event-reminder\",status=\"error\"}[2m])*60", "refId":"error", "legendFormat":"Ошибки ❌" }
+      ]
+    },
+
+    {
+      "id": 12, "type": "timeseries", "title": "Pending-уведомления",
+      "gridPos": {"h":8,"w":12,"x":12,"y":6},
+      "options": { "tooltip":{"mode":"single"}, "legend":{"displayMode":"list","placement":"bottom"} },
+      "fieldConfig": { "defaults": { "color":{"fixedColor":"orange","mode":"fixed"}, "custom":{"lineWidth":2,"fillOpacity":20} } },
+      "targets": [
+        { "datasource":"Prometheus", "expr":"reminder_notifications_pending{application=\"event-reminder\"}", "legendFormat":"В очереди" }
+      ]
+    },
+
+    { "collapsed": false, "gridPos": {"h":1,"w":24,"x":0,"y":14}, "id":20, "title":"События и пользователи", "type":"row" },
+
+    {
+      "id": 21, "type": "timeseries", "title": "Новые события (rate/мин)",
+      "gridPos": {"h":7,"w":12,"x":0,"y":15},
+      "options": { "tooltip":{"mode":"single"}, "legend":{"displayMode":"list","placement":"bottom"} },
+      "fieldConfig": { "defaults": { "color":{"fixedColor":"purple","mode":"fixed"}, "custom":{"lineWidth":2,"fillOpacity":10} } },
+      "targets": [
+        { "datasource":"Prometheus", "expr":"rate(reminder_events_created_total{application=\"event-reminder\"}[2m])*60", "legendFormat":"Создано событий/мин" }
+      ]
+    },
+
+    {
+      "id": 22, "type": "timeseries", "title": "Всего событий и пользователей",
+      "gridPos": {"h":7,"w":12,"x":12,"y":15},
+      "options": { "tooltip":{"mode":"multi"}, "legend":{"displayMode":"list","placement":"bottom"} },
+      "fieldConfig": { "defaults": { "color":{"mode":"palette-classic"}, "custom":{"lineWidth":2,"fillOpacity":5} } },
+      "targets": [
+        { "datasource":"Prometheus", "expr":"reminder_events_total{application=\"event-reminder\"}", "legendFormat":"Событий" },
+        { "datasource":"Prometheus", "expr":"reminder_users{application=\"event-reminder\"}", "legendFormat":"Пользователей" }
+      ]
+    },
+
+    { "collapsed": false, "gridPos": {"h":1,"w":24,"x":0,"y":22}, "id":30, "title":"Планировщик", "type":"row" },
+
+    {
+      "id": 31, "type": "timeseries", "title": "Время работы планировщика (p95)",
+      "gridPos": {"h":7,"w":12,"x":0,"y":23},
+      "options": { "tooltip":{"mode":"single"}, "legend":{"displayMode":"list","placement":"bottom"} },
+      "fieldConfig": { "defaults": { "color":{"fixedColor":"blue","mode":"fixed"}, "unit":"s", "custom":{"lineWidth":2,"fillOpacity":10} } },
+      "targets": [
+        { "datasource":"Prometheus", "expr":"histogram_quantile(0.95, rate(reminder_scheduler_duration_seconds_bucket{application=\"event-reminder\"}[2m]))", "legendFormat":"p95" },
+        { "datasource":"Prometheus", "expr":"histogram_quantile(0.50, rate(reminder_scheduler_duration_seconds_bucket{application=\"event-reminder\"}[2m]))", "legendFormat":"p50" }
+      ]
+    },
+
+    {
+      "id": 32, "type": "timeseries", "title": "HTTP-запросы (rate/сек)",
+      "gridPos": {"h":7,"w":12,"x":12,"y":23},
+      "options": { "tooltip":{"mode":"multi"}, "legend":{"displayMode":"list","placement":"bottom"} },
+      "fieldConfig": { "defaults": { "color":{"mode":"palette-classic"}, "custom":{"lineWidth":1,"fillOpacity":5} } },
+      "targets": [
+        { "datasource":"Prometheus", "expr":"rate(http_server_requests_seconds_count{application=\"event-reminder\",status=~\"2..\"}[1m])", "legendFormat":"2xx {{uri}}" },
+        { "datasource":"Prometheus", "expr":"rate(http_server_requests_seconds_count{application=\"event-reminder\",status=~\"[45]..\"}[1m])", "legendFormat":"4xx/5xx {{uri}} {{status}}" }
+      ]
+    },
+
+    { "collapsed": false, "gridPos": {"h":1,"w":24,"x":0,"y":30}, "id":40, "title":"JVM / Система", "type":"row" },
+
+    {
+      "id": 41, "type": "timeseries", "title": "JVM Память",
+      "gridPos": {"h":7,"w":8,"x":0,"y":31},
+      "options": { "tooltip":{"mode":"multi"}, "legend":{"displayMode":"list","placement":"bottom"} },
+      "fieldConfig": { "defaults": { "color":{"mode":"palette-classic"}, "unit":"bytes", "custom":{"lineWidth":2,"fillOpacity":10} } },
+      "targets": [
+        { "datasource":"Prometheus", "expr":"jvm_memory_used_bytes{application=\"event-reminder\",area=\"heap\"}", "legendFormat":"Heap used" },
+        { "datasource":"Prometheus", "expr":"jvm_memory_max_bytes{application=\"event-reminder\",area=\"heap\"}", "legendFormat":"Heap max" }
+      ]
+    },
+
+    {
+      "id": 42, "type": "timeseries", "title": "CPU",
+      "gridPos": {"h":7,"w":8,"x":8,"y":31},
+      "options": { "tooltip":{"mode":"single"}, "legend":{"displayMode":"list","placement":"bottom"} },
+      "fieldConfig": { "defaults": { "color":{"fixedColor":"orange","mode":"fixed"}, "unit":"percentunit", "custom":{"lineWidth":2,"fillOpacity":15} } },
+      "targets": [
+        { "datasource":"Prometheus", "expr":"process_cpu_usage{application=\"event-reminder\"}", "legendFormat":"CPU" }
+      ]
+    },
+
+    {
+      "id": 43, "type": "timeseries", "title": "Потоки JVM",
+      "gridPos": {"h":7,"w":8,"x":16,"y":31},
+      "options": { "tooltip":{"mode":"multi"}, "legend":{"displayMode":"list","placement":"bottom"} },
+      "fieldConfig": { "defaults": { "color":{"mode":"palette-classic"}, "custom":{"lineWidth":2} } },
+      "targets": [
+        { "datasource":"Prometheus", "expr":"jvm_threads_live_threads{application=\"event-reminder\"}", "legendFormat":"Live" },
+        { "datasource":"Prometheus", "expr":"jvm_threads_daemon_threads{application=\"event-reminder\"}", "legendFormat":"Daemon" }
+      ]
+    },
+
+    { "collapsed": false, "gridPos": {"h":1,"w":24,"x":0,"y":38}, "id":50, "title":"Логи (Loki)", "type":"row" },
+
+    {
+      "id": 51, "type": "logs", "title": "Логи приложения",
+      "gridPos": {"h":10,"w":24,"x":0,"y":39},
+      "options": { "dedupStrategy":"none", "enableLogDetails":true, "prettifyLogMessage":false, "showTime":true, "wrapLogMessage":true },
+      "targets": [
+        { "datasource":"Loki", "expr":"{application=\"event-reminder\"}", "legendFormat":"" }
+      ]
+    },
+
+    {
+      "id": 52, "type": "timeseries", "title": "Ошибки в логах",
+      "gridPos": {"h":6,"w":12,"x":0,"y":49},
+      "options": { "tooltip":{"mode":"single"}, "legend":{"displayMode":"list","placement":"bottom"} },
+      "fieldConfig": { "defaults": { "color":{"fixedColor":"red","mode":"fixed"}, "custom":{"lineWidth":2,"fillOpacity":15} } },
+      "targets": [
+        { "datasource":"Loki", "expr":"sum(rate({application=\"event-reminder\",level=\"ERROR\"}[1m]))", "legendFormat":"Errors/мин" }
+      ]
+    },
+
+    {
+      "id": 53, "type": "timeseries", "title": "Все уровни логов",
+      "gridPos": {"h":6,"w":12,"x":12,"y":49},
+      "options": { "tooltip":{"mode":"multi"}, "legend":{"displayMode":"list","placement":"bottom"} },
+      "fieldConfig": { "defaults": { "color":{"mode":"palette-classic"}, "custom":{"lineWidth":1,"fillOpacity":8} } },
+      "targets": [
+        { "datasource":"Loki", "expr":"sum(rate({application=\"event-reminder\",level=\"ERROR\"}[1m]))", "legendFormat":"ERROR" },
+        { "datasource":"Loki", "expr":"sum(rate({application=\"event-reminder\",level=\"WARN\"}[1m]))", "legendFormat":"WARN" },
+        { "datasource":"Loki", "expr":"sum(rate({application=\"event-reminder\",level=\"INFO\"}[1m]))", "legendFormat":"INFO" }
+      ]
+    }
+
+  ],
+  "refresh": "30s",
+  "schemaVersion": 38,
+  "tags": ["event-reminder", "spring-boot"],
+  "templating": { "list": [] },
+  "time": { "from": "now-1h", "to": "now" },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Event Reminder",
+  "uid": "event-reminder-main",
+  "version": 1
+}

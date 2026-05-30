@@ -1,0 +1,40 @@
+package ru.bakanov.eventreminder;
+
+import static com.tngtech.archunit.core.domain.JavaModifier.FINAL;
+import static com.tngtech.archunit.core.domain.JavaModifier.PRIVATE;
+import static com.tngtech.archunit.core.domain.JavaModifier.STATIC;
+
+import com.enofex.taikai.Taikai;
+import com.enofex.taikai.java.ImportsConfigurer;
+import java.util.List;
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+
+class ArchUnitTests {
+
+    private static final String BASE_PACKAGE = "ru.bakanov.eventreminder";
+
+    @Test
+    void shouldFulfillConstraints() {
+        Taikai.builder()
+                .namespace(BASE_PACKAGE)
+                .java(java -> java.noUsageOfDeprecatedAPIs()
+                        .methodsShouldNotDeclareGenericExceptions()
+                        .utilityClassesShouldBeFinalAndHavePrivateConstructor()
+                        .imports(ImportsConfigurer::shouldHaveNoCycles))
+                .logging(logging ->
+                        logging.loggersShouldFollowConventions(Logger.class, "LOG", List.of(PRIVATE, STATIC, FINAL)))
+                .test(test -> test.junit(junit -> junit.classesShouldBePackagePrivate(".*Test(s)")
+                        .classesShouldNotBeAnnotatedWithDisabled()
+                        .methodsShouldNotBeAnnotatedWithDisabled()))
+                .spring(spring -> spring.noAutowiredFields()
+                        .boot(boot -> boot.applicationClassShouldResideInPackage(BASE_PACKAGE))
+                        .configurations(c -> c.namesShouldMatch(".+Config"))
+                        .services(services ->
+                                services.shouldBeAnnotatedWithService().shouldNotDependOnControllers())
+                        .repositories(repositories ->
+                                repositories.shouldNotDependOnServices().namesShouldEndWithRepository()))
+                .build()
+                .checkAll();
+    }
+}

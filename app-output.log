@@ -1,0 +1,192 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< ru.bakanov:event-reminder >----------------------
+[INFO] Building event-reminder 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.4.5:run (default-cli) > test-compile @ event-reminder >>>
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (default) @ event-reminder ---
+[INFO] argLine set to -javaagent:C:\\Users\\Pavel\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.14\\org.jacoco.agent-0.8.14-runtime.jar=destfile=C:\\Users\\Pavel\\Desktop\\test-cloud\\holiday-notificator\\target\\jacoco.exec
+[INFO] 
+[INFO] --- spring-boot:3.4.5:build-info (default) @ event-reminder ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ event-reminder ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 19 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ event-reminder ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- spotless:3.2.0:check (default) @ event-reminder ---
+[INFO] Spotless.Java is keeping 61 files clean - 0 needs changes to be clean, 0 were already clean, 61 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ event-reminder ---
+[INFO] Copying 3 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ event-reminder ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] <<< spring-boot:3.4.5:run (default-cli) < test-compile @ event-reminder <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.4.5:run (default-cli) @ event-reminder ---
+[INFO] Attaching agents: []
+13:58:09,062 |-INFO in ch.qos.logback.classic.LoggerContext[default] - This is logback-classic version 1.5.18
+13:58:09,064 |-INFO in ch.qos.logback.classic.util.ContextInitializer@82c57b3 - Here is a list of configurators discovered as a service, by rank: 
+13:58:09,064 |-INFO in ch.qos.logback.classic.util.ContextInitializer@82c57b3 -   org.springframework.boot.logging.logback.RootLogLevelConfigurator
+13:58:09,064 |-INFO in ch.qos.logback.classic.util.ContextInitializer@82c57b3 - They will be invoked in order until ExecutionStatus.DO_NOT_INVOKE_NEXT_IF_ANY is returned.
+13:58:09,064 |-INFO in ch.qos.logback.classic.util.ContextInitializer@82c57b3 - Constructed configurator of type class org.springframework.boot.logging.logback.RootLogLevelConfigurator
+13:58:09,068 |-INFO in ch.qos.logback.classic.util.ContextInitializer@82c57b3 - org.springframework.boot.logging.logback.RootLogLevelConfigurator.configure() call lasted 0 milliseconds. ExecutionStatus=INVOKE_NEXT_IF_ANY
+13:58:09,068 |-INFO in ch.qos.logback.classic.util.ContextInitializer@82c57b3 - Trying to configure with ch.qos.logback.classic.joran.SerializedModelConfigurator
+13:58:09,068 |-INFO in ch.qos.logback.classic.util.ContextInitializer@82c57b3 - Constructed configurator of type class ch.qos.logback.classic.joran.SerializedModelConfigurator
+13:58:09,068 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.scmo]
+13:58:09,068 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.scmo]
+13:58:09,068 |-INFO in ch.qos.logback.classic.util.ContextInitializer@82c57b3 - ch.qos.logback.classic.joran.SerializedModelConfigurator.configure() call lasted 0 milliseconds. ExecutionStatus=INVOKE_NEXT_IF_ANY
+13:58:09,068 |-INFO in ch.qos.logback.classic.util.ContextInitializer@82c57b3 - Trying to configure with ch.qos.logback.classic.util.DefaultJoranConfigurator
+13:58:09,070 |-INFO in ch.qos.logback.classic.util.ContextInitializer@82c57b3 - Constructed configurator of type class ch.qos.logback.classic.util.DefaultJoranConfigurator
+13:58:09,070 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+13:58:09,070 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.xml]
+13:58:09,070 |-INFO in ch.qos.logback.classic.util.ContextInitializer@82c57b3 - ch.qos.logback.classic.util.DefaultJoranConfigurator.configure() call lasted 2 milliseconds. ExecutionStatus=INVOKE_NEXT_IF_ANY
+13:58:09,070 |-INFO in ch.qos.logback.classic.util.ContextInitializer@82c57b3 - Trying to configure with ch.qos.logback.classic.BasicConfigurator
+13:58:09,070 |-INFO in ch.qos.logback.classic.util.ContextInitializer@82c57b3 - Constructed configurator of type class ch.qos.logback.classic.BasicConfigurator
+13:58:09,070 |-INFO in ch.qos.logback.classic.BasicConfigurator@5be82d43 - Setting up default configuration.
+13:58:09,084 |-INFO in ch.qos.logback.core.ConsoleAppender[console] - BEWARE: Writing to the console can be very slow. Avoid logging to the 
+13:58:09,084 |-INFO in ch.qos.logback.core.ConsoleAppender[console] - console in production environments, especially in high volume systems.
+13:58:09,084 |-INFO in ch.qos.logback.core.ConsoleAppender[console] - See also https://logback.qos.ch/codes.html#slowConsole
+13:58:09,084 |-INFO in ch.qos.logback.classic.util.ContextInitializer@82c57b3 - ch.qos.logback.classic.BasicConfigurator.configure() call lasted 14 milliseconds. ExecutionStatus=NEUTRAL
+13:58:09,486 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - Processing appender named [STDOUT_JSON]
+13:58:09,486 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+13:58:09,501 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [net.logstash.logback.fieldnames.LogstashFieldNames] for [fieldNames] property
+13:58:09,503 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@600b0b7 - value "{"application":"event-reminder"}" substituted for "{"application":"${APP_NAME}"}"
+13:58:09,505 |-WARN in ch.qos.logback.core.model.processor.ImplicitModelHandler - Ignoring unknown property [maxDepthPerCause] in [net.logstash.logback.stacktrace.ShortenedThrowableConverter]
+13:58:09,651 |-INFO in ch.qos.logback.core.ConsoleAppender[STDOUT_JSON] - BEWARE: Writing to the console can be very slow. Avoid logging to the 
+13:58:09,651 |-INFO in ch.qos.logback.core.ConsoleAppender[STDOUT_JSON] - console in production environments, especially in high volume systems.
+13:58:09,651 |-INFO in ch.qos.logback.core.ConsoleAppender[STDOUT_JSON] - See also https://logback.qos.ch/codes.html#slowConsole
+13:58:09,651 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - Processing appender named [FILE_JSON]
+13:58:09,651 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - About to instantiate appender of type [ch.qos.logback.core.rolling.RollingFileAppender]
+13:58:09,652 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@600b0b7 - value "./logs/app.json" substituted for "${LOG_PATH}/app.json"
+13:58:09,655 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@600b0b7 - value "./logs/app.%d{yyyy-MM-dd}.json.gz" substituted for "${LOG_PATH}/app.%d{yyyy-MM-dd}.json.gz"
+13:58:09,655 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy@878598679 - Will use gz compression
+13:58:09,660 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy@878598679 - Will use the pattern ./logs/app.%d{yyyy-MM-dd}.json for the active file
+13:58:09,663 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - The date pattern is 'yyyy-MM-dd' from file name pattern './logs/app.%d{yyyy-MM-dd}.json.gz'.
+13:58:09,663 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Roll-over at midnight.
+13:58:09,666 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Setting initial period to 2026-05-29T10:58:00.008Z
+13:58:09,666 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [net.logstash.logback.fieldnames.LogstashFieldNames] for [fieldNames] property
+13:58:09,667 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@600b0b7 - value "{"application":"event-reminder"}" substituted for "{"application":"${APP_NAME}"}"
+13:58:09,669 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[FILE_JSON] - Active log file name: ./logs/app.json
+13:58:09,669 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[FILE_JSON] - File property is set to [./logs/app.json]
+13:58:09,670 |-WARN in ch.qos.logback.core.model.processor.AppenderModelHandler - Appender named [STDOUT_PLAIN] not referenced. Skipping further processing.
+13:58:09,670 |-INFO in ch.qos.logback.classic.model.processor.RootLoggerModelHandler - Setting level of ROOT logger to INFO
+13:58:09,670 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5ea502e0 - Propagating INFO level on Logger[ROOT] onto the JUL framework
+13:58:09,670 |-INFO in ch.qos.logback.core.model.processor.AppenderRefModelHandler - Attaching appender named [STDOUT_JSON] to Logger[ROOT]
+13:58:09,670 |-INFO in ch.qos.logback.core.model.processor.AppenderRefModelHandler - Attaching appender named [FILE_JSON] to Logger[ROOT]
+13:58:09,670 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [ru.bakanov.eventreminder] to DEBUG
+13:58:09,670 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5ea502e0 - Propagating DEBUG level on Logger[ru.bakanov.eventreminder] onto the JUL framework
+13:58:09,670 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.springframework] to WARN
+13:58:09,670 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5ea502e0 - Propagating WARN level on Logger[org.springframework] onto the JUL framework
+13:58:09,670 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.hibernate] to WARN
+13:58:09,670 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5ea502e0 - Propagating WARN level on Logger[org.hibernate] onto the JUL framework
+13:58:09,670 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [com.zaxxer.hikari] to WARN
+13:58:09,670 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@5ea502e0 - Propagating WARN level on Logger[com.zaxxer.hikari] onto the JUL framework
+13:58:09,670 |-INFO in ch.qos.logback.core.model.processor.DefaultProcessor@443dbe42 - End of configuration.
+13:58:09,672 |-INFO in org.springframework.boot.logging.logback.SpringBootJoranConfigurator@473b3b7a - Registering current configuration as safe fallback point
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.5)
+
+{"@timestamp":"2026-05-29T13:58:09.7446905+03:00","message":"Starting EventReminderApplication using Java 26.0.1 with PID 16960 (C:\\Users\\Pavel\\Desktop\\test-cloud\\holiday-notificator\\target\\classes started by Pavel in C:\\Users\\Pavel\\Desktop\\test-cloud\\holiday-notificator)","logger_name":"ru.bakanov.eventreminder.EventReminderApplication","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:09.7546985+03:00","message":"Running with Spring Boot v3.4.5, Spring v6.2.6","logger_name":"ru.bakanov.eventreminder.EventReminderApplication","thread_name":"main","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:09.7557475+03:00","message":"No active profile set, falling back to 1 default profile: \"default\"","logger_name":"ru.bakanov.eventreminder.EventReminderApplication","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:13.0555172+03:00","message":"Initializing ProtocolHandler [\"http-nio-8080\"]","logger_name":"org.apache.coyote.http11.Http11NioProtocol","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:13.0565426+03:00","message":"Starting service [Tomcat]","logger_name":"org.apache.catalina.core.StandardService","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:13.0565426+03:00","message":"Starting Servlet engine: [Apache Tomcat/10.1.40]","logger_name":"org.apache.catalina.core.StandardEngine","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:13.1080158+03:00","message":"Initializing Spring embedded WebApplicationContext","logger_name":"org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:13.5336742+03:00","message":"Set default schema name to public","logger_name":"liquibase.database","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:13.7911037+03:00","message":"Reading from public.databasechangelog","logger_name":"liquibase.changelog","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:13.8464961+03:00","message":"Database is up to date, no changesets to execute","logger_name":"liquibase.ui","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:13.848072+03:00","message":"Reading from public.databasechangelog","logger_name":"liquibase.changelog","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:13.855413+03:00","message":"UPDATE SUMMARY","logger_name":"liquibase.util","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:13.8567205+03:00","message":"Run:                          0","logger_name":"liquibase.util","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:13.8567205+03:00","message":"Previously run:               5","logger_name":"liquibase.util","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:13.8567205+03:00","message":"Filtered out:                 0","logger_name":"liquibase.util","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:13.8572489+03:00","message":"-------------------------------","logger_name":"liquibase.util","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:13.8572489+03:00","message":"Total change sets:            5","logger_name":"liquibase.util","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:13.857778+03:00","message":"Update summary generated","logger_name":"liquibase.util","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:13.8583629+03:00","message":"Command execution complete","logger_name":"liquibase.command","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:16.7245101+03:00","message":"Starting ProtocolHandler [\"http-nio-8080\"]","logger_name":"org.apache.coyote.http11.Http11NioProtocol","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:16.7480338+03:00","message":"Started EventReminderApplication in 7.57 seconds (process running for 7.852)","logger_name":"ru.bakanov.eventreminder.EventReminderApplication","thread_name":"main","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:58:21.4349305+03:00","message":"Initializing Spring DispatcherServlet 'dispatcherServlet'","logger_name":"org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]","thread_name":"http-nio-8080-exec-3","level":"INFO","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:59:00.0050111+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T13:59:00.0215095+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:00:00.0048888+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:00:00.0226536+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:01:00.0024214+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:01:00.0237235+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:02:00.0025692+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:02:00.0220947+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:03:00.0007565+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:03:00.027316+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:04:00.0105453+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:04:00.0263209+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:05:00.0005255+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:05:00.0177064+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:06:00.0041003+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:06:00.0364098+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:07:00.0013265+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:07:00.0174168+03:00","message":"Processing 2 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:07:01.3662817+03:00","message":"Email sent to paulstacktrace@gmail.com","logger_name":"ru.bakanov.eventreminder.notifications.email.EmailNotificationAdapter","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:07:01.9013737+03:00","message":"Telegram message sent to chat 1293578282","logger_name":"ru.bakanov.eventreminder.notifications.telegram.TelegramNotificationAdapter","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:08:00.0008362+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:08:00.0143225+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:09:00.0087308+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:09:00.0183993+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:10:00.00296+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:10:00.0373856+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:11:00.0012242+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:11:00.023729+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:12:00.0008223+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:12:00.0254148+03:00","message":"Processing 2 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:12:01.0148795+03:00","message":"Email sent to paulstacktrace@gmail.com","logger_name":"ru.bakanov.eventreminder.notifications.email.EmailNotificationAdapter","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:12:01.4147623+03:00","message":"Telegram message sent to chat 1293578282","logger_name":"ru.bakanov.eventreminder.notifications.telegram.TelegramNotificationAdapter","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:13:00.000076+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:13:00.0101574+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:14:00.0012101+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:14:00.0279411+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:15:00.0010229+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:15:00.0241277+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:16:00.0013367+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:16:00.0590535+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:17:00.0005589+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:17:00.0246691+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:18:00.0020377+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:18:00.0649241+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:19:00.0013434+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:19:00.0248192+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:20:00.0026771+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:20:00.0237088+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:21:00.0029186+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:21:00.024118+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:22:00.0002298+03:00","message":"Running reminder scheduler job","logger_name":"ru.bakanov.eventreminder.scheduler.ReminderSchedulerJob","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+{"@timestamp":"2026-05-29T14:22:00.0306503+03:00","message":"Processing 0 pending notifications","logger_name":"ru.bakanov.eventreminder.notifications.NotificationsAPI","thread_name":"scheduling-1","level":"DEBUG","application":"event-reminder"}
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  24:42 min
+[INFO] Finished at: 2026-05-29T14:22:49+03:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.4.5:run (default-cli) on project event-reminder: Process terminated with exit code: -1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 009-add-event-at-to-notification-log
+      author: system
+      changes:
+        - addColumn:
+            tableName: notification_log
+            columns:
+              - column:
+                  name: event_at
+                  type: timestamp with time zone
