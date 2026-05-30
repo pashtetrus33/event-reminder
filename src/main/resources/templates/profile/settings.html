@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="dark" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Настройки — RemindMe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link th:href="@{/css/app.css}" rel="stylesheet">
+</head>
+<body>
+
+<div th:replace="~{layout/navbar :: navbar}"></div>
+
+<main class="main-content">
+    <div class="container py-4" style="max-width: 640px;">
+        <h2 class="fw-bold mb-4">Настройки профиля</h2>
+
+        <div th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle me-2"></i><span th:text="${success}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-circle me-2"></i><span th:text="${error}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <div class="card rm-card mb-4">
+            <div class="card-header fw-semibold"><i class="bi bi-bell me-2"></i>Каналы уведомлений</div>
+            <div class="card-body">
+                <form th:action="@{/profile/update}" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="text" class="form-control" th:value="${user.email}" readonly disabled>
+                        <div class="form-text">Email задан при регистрации</div>
+                    </div>
+                    <div class="mb-3 form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="emailEnabled"
+                               name="emailNotificationsEnabled" th:checked="${user.emailNotificationsEnabled}">
+                        <label class="form-check-label" for="emailEnabled">Email-уведомления</label>
+                    </div>
+                    <hr class="border-secondary">
+                    <div class="mb-3">
+                        <label class="form-label">Telegram Chat ID</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-telegram"></i></span>
+                            <input type="text" name="telegramChatId" class="form-control"
+                                   th:value="${user.telegramChatId}" placeholder="например: 123456789">
+                        </div>
+                        <div class="form-text">Узнать ID можно через <code>@userinfobot</code> в Telegram</div>
+                    </div>
+                    <div class="mb-4 form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="telegramEnabled"
+                               name="telegramNotificationsEnabled" th:checked="${user.telegramNotificationsEnabled}">
+                        <label class="form-check-label" for="telegramEnabled">Telegram-уведомления</label>
+                    </div>
+                    <hr class="border-secondary">
+                    <div class="mb-3">
+                        <label class="form-label"><i class="bi bi-sunrise me-1"></i>Время «начала дня»</label>
+                        <select name="startOfDayHour" class="form-select" style="max-width:160px">
+                            <option th:each="h : ${#numbers.sequence(0, 23)}"
+                                    th:value="${h}"
+                                    th:text="${(h < 10 ? '0' : '') + h + ':00'}"
+                                    th:selected="${user.startOfDayHour == h}">09:00</option>
+                        </select>
+                        <div class="form-text">Используется для уведомлений типа «в начале дня»</div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label"><i class="bi bi-globe me-1"></i>Часовой пояс</label>
+                        <select name="timezone" class="form-select" style="max-width:280px">
+                            <option th:each="tz : ${timezones}"
+                                    th:value="${tz}"
+                                    th:text="${tz}"
+                                    th:selected="${user.timezone == tz}"></option>
+                        </select>
+                        <div class="form-text">Используется при создании событий через Telegram</div>
+                    </div>
+                    <button type="submit" class="btn btn-accent">
+                        <i class="bi bi-check-lg me-2"></i>Сохранить
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card rm-card">
+            <div class="card-header fw-semibold"><i class="bi bi-key me-2"></i>Сменить пароль</div>
+            <div class="card-body">
+                <form th:action="@{/profile/change-password}" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Текущий пароль</label>
+                        <input type="password" name="currentPassword" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Новый пароль</label>
+                        <input type="password" name="newPassword" class="form-control" required minlength="6">
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Повтор нового пароля</label>
+                        <input type="password" name="confirmNewPassword" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-outline-warning">
+                        <i class="bi bi-shield-lock me-2"></i>Изменить пароль
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

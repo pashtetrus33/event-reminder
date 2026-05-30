@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "spring-boot-skill": {
+      "source": "sivaprasadreddy/sivalabs-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/spring-boot/SKILL.md",
+      "computedHash": "4b0dad89c8fe1b04d0c729cc1054e8bce7e2a359c9ec93cac6949ef05956f9d5"
+    }
+  }
+}

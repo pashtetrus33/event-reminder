@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 007-add-start-of-day-hour-to-users
+      author: system
+      changes:
+        - addColumn:
+            tableName: users
+            columns:
+              - column:
+                  name: start_of_day_hour
+                  type: int
+                  defaultValueNumeric: 9
+                  constraints:
+                    nullable: false

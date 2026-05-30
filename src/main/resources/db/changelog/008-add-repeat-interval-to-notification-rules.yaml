@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 008-add-repeat-interval-to-notification-rules
+      author: system
+      changes:
+        - addColumn:
+            tableName: notification_rules
+            columns:
+              - column:
+                  name: repeat_interval_minutes
+                  type: int

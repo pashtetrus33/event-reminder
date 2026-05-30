@@ -1,0 +1,24 @@
+spring:
+  docker:
+    compose:
+      enabled: false
+  mail:
+    host: localhost
+    port: 25
+    username: test
+    password: test
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false
+
+app:
+  telegram:
+    bot-token: ""
+  mail:
+    from: test@example.com
+  scheduler:
+    cron: "0 * * * * *"
+    start-of-day-hour: 9

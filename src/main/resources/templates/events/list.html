@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="dark" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <title>События — RemindMe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link th:href="@{/css/app.css}" rel="stylesheet">
+</head>
+<body>
+
+<div th:replace="~{layout/navbar :: navbar}"></div>
+
+<main class="main-content">
+    <div class="container-fluid py-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <div>
+                <h2 class="fw-bold mb-1">Все события</h2>
+                <p class="text-muted mb-0" th:text="'Всего: ' + ${#lists.size(events)}">Всего: 0</p>
+            </div>
+            <a th:href="@{/events/new}" class="btn btn-accent">
+                <i class="bi bi-plus-lg me-2"></i>Новое событие
+            </a>
+        </div>
+
+        <div th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle me-2"></i><span th:text="${success}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <div th:if="${#lists.isEmpty(events)}" class="text-center py-5 empty-state">
+            <i class="bi bi-calendar2-plus display-1 text-muted"></i>
+            <h4 class="mt-3 text-muted">Событий ещё нет</h4>
+            <a th:href="@{/events/new}" class="btn btn-accent mt-2">
+                <i class="bi bi-plus-lg me-2"></i>Создать первое событие
+            </a>
+        </div>
+
+        <div class="card rm-card" th:unless="${#lists.isEmpty(events)}">
+            <div class="table-responsive">
+                <table class="table table-dark table-hover mb-0">
+                    <thead>
+                    <tr>
+                        <th>Название</th>
+                        <th>Дата</th>
+                        <th>Повтор</th>
+                        <th>Метки</th>
+                        <th class="text-end">Действия</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="event : ${events}">
+                        <td>
+                            <div class="fw-semibold" th:text="${event.title}">Название</div>
+                            <div class="text-muted small" th:text="${event.description}"></div>
+                        </td>
+                        <td>
+                            <i class="bi bi-clock me-1 text-accent"></i>
+                            <span th:attr="data-utc=${event.nextOccurrenceAt}" th:text="${event.nextOccurrenceDisplay()}">дата</span>
+                        </td>
+                        <td>
+                            <span class="badge bg-secondary" th:if="${!event.recurring}">Разовое</span>
+                            <span class="badge bg-accent" th:if="${event.recurring}" th:text="${event.recurrenceType.displayName()}">Повтор</span>
+                        </td>
+                        <td>
+                            <th:block th:each="labelId : ${event.labelIds}">
+                                <th:block th:each="label : ${labels}">
+                                    <span th:if="${label.id == labelId}"
+                                          class="badge label-badge me-1"
+                                          th:style="'background-color:' + ${label.color}"
+                                          th:text="${label.name}">метка</span>
+                                </th:block>
+                            </th:block>
+                        </td>
+                        <td class="text-end">
+                            <a th:href="@{/events/{id}/edit(id=${event.id})}" class="btn btn-sm btn-outline-secondary me-1">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                            <button class="btn btn-sm btn-outline-danger"
+                                    th:attr="data-event-id=${event.id}"
+                                    onclick="deleteEvent(this)">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

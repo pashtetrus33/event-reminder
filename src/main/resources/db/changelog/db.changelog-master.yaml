@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/001-create-users.yaml
+  - include:
+      file: db/changelog/002-create-labels.yaml
+  - include:
+      file: db/changelog/003-create-events.yaml
+  - include:
+      file: db/changelog/004-create-notification-rules.yaml
+  - include:
+      file: db/changelog/005-create-notification-log.yaml
+  - include:
+      file: db/changelog/006-add-timezone-to-events.yaml
+  - include:
+      file: db/changelog/007-add-start-of-day-hour-to-users.yaml
+  - include:
+      file: db/changelog/008-add-repeat-interval-to-notification-rules.yaml
+  - include:
+      file: db/changelog/009-add-event-at-to-notification-log.yaml
