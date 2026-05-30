@@ -17,3 +17,5 @@ databaseChangeLog:
       file: db/changelog/008-add-repeat-interval-to-notification-rules.yaml
   - include:
       file: db/changelog/009-add-event-at-to-notification-log.yaml
+  - include:
+      file: db/changelog/010-add-timezone-to-users.yaml

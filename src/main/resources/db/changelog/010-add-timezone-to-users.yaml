@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 010-add-timezone-to-users
+      author: system
+      changes:
+        - addColumn:
+            tableName: users
+            columns:
+              - column:
+                  name: timezone
+                  type: varchar(50)
+                  defaultValue: UTC
+                  constraints:
+                    nullable: false
